@@ -6,9 +6,9 @@ set -e
 echo "🚀 Iniciando despliegue..."
 
 # Variables configurables
-APP_DIR="/home/backend"
+APP_DIR="/home/backend/Amaris_backend"
 DOCKER_COMPOSE_FILE="$APP_DIR/docker-compose.yml"
-BACKUP_DIR="/home/backend/backups"
+BACKUP_DIR="/home/backend/Amaris_backend/backups"
 CONTAINER_NAME="funds_backend"
 COMPOSE_PROJECT_NAME="funds"
 
