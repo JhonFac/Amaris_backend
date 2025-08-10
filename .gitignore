@@ -1,0 +1,54 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django specific
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Docker
+.dockerignore
+Dockerfile*
+docker-compose*
+.docker/
+
+# Nginx
+nginx.conf
+nginx/
+*.nginx
+
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+ssl/
+
+# Logs
+logs/
+*.log
+
+# Local development
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Scripts con credenciales
+send_sms.py
+send_email.py
+prueba-tecnica-generica.pdf
+DEPLOYMENT-SUMMARY.md
+ec2-setup.sh
+initial-deploy.sh
+README-DEPLOYMENT.md

@@ -1,0 +1,96 @@
+# @baseUrl = http://localhost:8000/api
+@baseUrl = http://192.168.1.7:8000/api
+@clientId = CL_TEST_001
+@clientEmail = jhonfredyaya04@gmail.com
+@clientPhone = +573212777381
+
+### Health check
+GET {{baseUrl}}/health/
+
+### Initialize system (create DynamoDB table and default funds)
+POST {{baseUrl}}/initialize/
+Content-Type: application/json
+
+### List funds
+GET {{baseUrl}}/funds/
+
+### Get fund by id
+GET {{baseUrl}}/funds/1/
+
+### Create client (starts with COP $500,000)
+POST {{baseUrl}}/clients/create/
+Content-Type: application/json
+
+{
+  "client_id": "{{clientId}}",
+  "nombre": "Jhon",
+  "apellidos": "Aya",
+  "ciudad": "Bogota",
+  "email": "{{clientEmail}}",
+  "phone": "{{clientPhone}}"
+}
+
+### List clients
+GET {{baseUrl}}/clients/
+
+### Get client by id
+GET {{baseUrl}}/clients/{{clientId}}/
+
+### Get client balance (includes subscribed funds)
+GET {{baseUrl}}/clients/{{clientId}}/balance/
+
+### Deposit to client account
+POST {{baseUrl}}/deposit/
+Content-Type: application/json
+
+{
+  "client_id": "{{clientId}}",
+  "amount": 200000
+}
+
+### Subscribe to a fund (uses fund minimum automatically)
+# Valid fund ids: 1,2,3,4,5
+# Sequence to run out of funds 4,5,2,1,3
+POST {{baseUrl}}/subscribe/
+Content-Type: application/json
+
+{
+  "client_id": "{{clientId}}",
+  "fund_id": "4"
+}
+
+### Attempt to subscribe again to the same fund (should return duplicate subscription error)
+POST {{baseUrl}}/subscribe/
+Content-Type: application/json
+
+{
+  "client_id": "{{clientId}}",
+  "fund_id": "4"
+}
+
+### Subscribe with insufficient balance (should return detailed fund info and missing amount)
+POST {{baseUrl}}/subscribe/
+Content-Type: application/json
+
+{
+  "client_id": "{{clientId}}",
+  "fund_id": "4"
+}
+
+### Get client subscriptions
+GET {{baseUrl}}/clients/{{clientId}}/subscriptions/
+
+### Get client transactions
+GET {{baseUrl}}/clients/{{clientId}}/transactions/
+
+### Cancel subscription
+POST {{baseUrl}}/cancel/
+Content-Type: application/json
+
+{
+  "client_id": "{{clientId}}",
+  "fund_id": "3"
+}
+
+### Get client balance after cancellation
+GET {{baseUrl}}/clients/{{clientId}}/balance/
