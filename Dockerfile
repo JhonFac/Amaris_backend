@@ -24,6 +24,7 @@ COPY . .
 
 # Copy entrypoint.sh and set permissions
 COPY entrypoint.sh ./
+RUN chmod +x entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
 # Create a non-root user
