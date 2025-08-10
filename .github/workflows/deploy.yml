@@ -28,6 +28,7 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           cd /home/backend/Amaris_backend
+          git config --global --add safe.directory /home/backend/Amaris_backend
           sudo chmod +x deploy.sh
           bash deploy.sh
           
