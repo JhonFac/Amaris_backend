@@ -6,6 +6,7 @@ set -e
 echo "🚀 Iniciando despliegue..."
 
 # Variables configurables
+APP_REPO="/home/backend"
 APP_DIR="/home/backend/Amaris_backend"
 DOCKER_COMPOSE_FILE="$APP_DIR/docker-compose.yml"
 BACKUP_DIR="/home/backend/Amaris_backend/backups"
@@ -22,7 +23,7 @@ if [ -f "$APP_DIR/db.sqlite3" ]; then
 fi
 
 # Ir al directorio de la aplicación
-cd $APP_DIR
+cd $APP_REPO
 
 # Pull de los últimos cambios
 echo "📥 Actualizando código desde Git..."
@@ -41,6 +42,9 @@ fi
 # Limpiar contenedores huérfanos del proyecto
 echo "🧹 Limpiando contenedores huérfanos..."
 docker compose -p $COMPOSE_PROJECT_NAME down --remove-orphans 2>/dev/null || true
+
+# Ir al directorio de la aplicación
+cd $APP_DIR
 
 # Reconstruir la imagen
 echo "🔨 Reconstruyendo imagen Docker..."
