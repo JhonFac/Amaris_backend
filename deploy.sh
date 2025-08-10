@@ -6,9 +6,9 @@ set -e
 echo "🚀 Iniciando despliegue..."
 
 # Variables configurables
-APP_DIR="/home/ubuntu/funds-backend"
+APP_DIR="/home/backend"
 DOCKER_COMPOSE_FILE="$APP_DIR/docker-compose.yml"
-BACKUP_DIR="/home/ubuntu/backups"
+BACKUP_DIR="/home/backend/backups"
 CONTAINER_NAME="funds_backend"
 COMPOSE_PROJECT_NAME="funds"
 
