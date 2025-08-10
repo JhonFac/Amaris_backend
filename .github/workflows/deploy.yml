@@ -27,9 +27,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd /home/backend/Amaris_backend
+          cd /home/backend
           sudo chmod +x deploy.sh
-          sudo mkdir -p /home/backend/backups
-          sudo chown -R $USER:$USER /home/backend/backups
           bash deploy.sh
           

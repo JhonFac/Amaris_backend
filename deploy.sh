@@ -6,28 +6,16 @@ set -e
 echo "🚀 Iniciando despliegue..."
 
 # Variables configurables
-APP_REPO="/home/backend"
 APP_DIR="/home/backend/Amaris_backend"
 DOCKER_COMPOSE_FILE="$APP_DIR/docker-compose.yml"
-BACKUP_DIR="/home/backend/Amaris_backend/backups"
 CONTAINER_NAME="funds_backend"
 COMPOSE_PROJECT_NAME="funds"
 
-# Crear directorio de backups si no existe
-mkdir -p $BACKUP_DIR
-
-# Backup de la base de datos SQLite (si existe)
-if [ -f "$APP_DIR/db.sqlite3" ]; then
-    echo "📦 Creando backup de la base de datos..."
-    cp "$APP_DIR/db.sqlite3" "$BACKUP_DIR/db_$(date +%Y%m%d_%H%M%S).sqlite3"
-fi
-
-# Ir al directorio de la aplicación
-cd $APP_REPO
-
 # Pull de los últimos cambios
 echo "📥 Actualizando código desde Git..."
-git pull origin main
+# git pull origin main
+git fetch origin main
+git reset --hard origin/main
 
 # Parar el contenedor actual de forma específica
 echo "🛑 Deteniendo contenedor actual..."
