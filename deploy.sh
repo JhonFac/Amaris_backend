@@ -33,11 +33,11 @@ docker compose -p $COMPOSE_PROJECT_NAME down --remove-orphans 2>/dev/null || tru
 
 # Reconstruir la imagen
 echo "🔨 Reconstruyendo imagen Docker..."
-docker compose -f $DOCKER_COMPOSE_FILE build
+docker compose build
 
 # Levantar los contenedores
 echo "🚀 Levantando contenedores..."
-docker compose -f $DOCKER_COMPOSE_FILE up -d
+docker compose up -d
 
 # Verificar que el contenedor esté corriendo
 echo "✅ Verificando estado del contenedor..."
