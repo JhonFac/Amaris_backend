@@ -22,8 +22,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY . .
 
-# Copy entrypoint.sh and set permissions
-COPY entrypoint.sh ./
+# Set permissions for entrypoint.sh
 RUN chmod +x entrypoint.sh
 
 # Create a non-root user
