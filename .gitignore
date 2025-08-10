@@ -17,8 +17,6 @@ staticfiles/
 
 # Docker
 .dockerignore
-Dockerfile*
-docker-compose*
 .docker/
 
 # Nginx
