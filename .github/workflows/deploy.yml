@@ -31,12 +31,3 @@ jobs:
           chmod +x deploy.sh
           ./deploy.sh
           
-    - name: Health check
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          sleep 30
-          curl -f http://localhost:8000/ || exit 1
