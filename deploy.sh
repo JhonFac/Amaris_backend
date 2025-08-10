@@ -31,9 +31,6 @@ fi
 echo "🧹 Limpiando contenedores huérfanos..."
 docker compose -p $COMPOSE_PROJECT_NAME down --remove-orphans 2>/dev/null || true
 
-# Ir al directorio de la aplicación
-cd $APP_DIR
-
 # Reconstruir la imagen
 echo "🔨 Reconstruyendo imagen Docker..."
 docker compose build --no-cache
