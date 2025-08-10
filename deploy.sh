@@ -29,7 +29,7 @@ fi
 
 # Limpiar contenedores huérfanos del proyecto
 echo "🧹 Limpiando contenedores huérfanos..."
-docker compose -p $COMPOSE_PROJECT_NAME down --remove-orphans 2>/dev/null || true
+docker-compose -p $COMPOSE_PROJECT_NAME down --remove-orphans 2>/dev/null || true
 
 # Reconstruir la imagen
 echo "🔨 Reconstruyendo imagen Docker..."
@@ -51,7 +51,7 @@ if docker ps -q -f name=$CONTAINER_NAME | grep -q .; then
 else
     echo "❌ Error: El contenedor $CONTAINER_NAME no está corriendo"
     echo "📋 Últimos logs:"
-    docker compose logs --tail=20
+    docker-compose logs --tail=20
     exit 1
 fi
 
