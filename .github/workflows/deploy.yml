@@ -28,6 +28,6 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           cd /home/backend/Amaris_backend
-          chmod +x deploy.sh
-          ./deploy.sh
+          sudo chmod +x deploy.sh
+          bash deploy.sh
           
