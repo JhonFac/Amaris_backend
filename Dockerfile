@@ -22,9 +22,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY . .
 
-# Set permissions for entrypoint.sh
-RUN chmod +x entrypoint.sh
-
 # Create a non-root user
 RUN adduser --disabled-password --gecos '' appuser
 RUN chown -R appuser:appuser /app
@@ -34,5 +31,4 @@ USER appuser
 EXPOSE 8000
 
 # Run the application
-ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "funds_management.wsgi:application"]
