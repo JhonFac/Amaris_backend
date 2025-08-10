@@ -29,6 +29,7 @@ jobs:
         script: |
           cd /home/backend/Amaris_backend
           git config --global --add safe.directory /home/backend/Amaris_backend
+          sudo chown -R $USER:$USER /home/backend/Amaris_backend
           sudo chmod +x deploy.sh
           bash deploy.sh
           
